@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
+const cors = require("cors");
 
 const app = express();
 
@@ -12,6 +13,17 @@ const SMTP_HOST = process.env.SMTP_HOST;
 const SMTP_PORT = process.env.SMTP_PORT;
 const SMTP_USER = process.env.SMTP_USER;
 const SMTP_PASS = process.env.SMTP_PASS;
+
+app.use(
+  cors({
+    origin: [
+      "https://hire-ind-talents-frontend.onrender.com",
+      "https://idr.brandingbeez.co.uk",
+      "http://localhost:5173", // Local development
+    ],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 
