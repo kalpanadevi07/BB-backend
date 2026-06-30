@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const leadRoutes = require("./routes/leadRoutes");
 
 const Lead = require("../models/Lead");
 
@@ -11,7 +12,7 @@ const {
 // ==========================
 // Create New Lead
 // ==========================
-router.post("/", async (req, res) => {
+router.post("/leads", async (req, res) => {
   try {
     const { fullName, email, phone, roles, workTypes } = req.body;
 
@@ -72,7 +73,7 @@ router.post("/", async (req, res) => {
 // ==========================
 // Get All Leads
 // ==========================
-router.get("/", async (req, res) => {
+router.get("/leads", async (req, res) => {
   try {
     const leads = await Lead.find().sort({
       createdAt: -1,
@@ -96,7 +97,7 @@ router.get("/", async (req, res) => {
 // ==========================
 // Get Single Lead
 // ==========================
-router.get("/:id", async (req, res) => {
+router.get("/leads/:id", async (req, res) => {
   try {
     const lead = await Lead.findById(req.params.id);
 

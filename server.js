@@ -25,6 +25,8 @@ app.use(
   })
 );
 
+const leadRoutes = require("./routes/leadRoutes");
+
 app.use(express.json());
 
 // Connect to MongoDB (no deprecated options)
@@ -46,6 +48,8 @@ const transporter = nodemailer.createTransport({
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
+
+app.use("/api", leadRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
