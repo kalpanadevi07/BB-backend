@@ -4,8 +4,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
 const cors = require("cors");
-
 const app = express();
+const leadRoutes = require("./routes/leadRoutes");
 
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
@@ -25,7 +25,6 @@ app.use(
   })
 );
 
-const leadRoutes = require("./routes/leadRoutes");
 
 app.use(express.json());
 

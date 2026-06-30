@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const leadRoutes = require("./routes/leadRoutes");
 
 const Lead = require("../models/Lead");
 
