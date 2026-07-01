@@ -50,9 +50,17 @@ router.post("/leads", async (req, res) => {
       workTypes,
     });
 
-    await sendLeadNotification(lead);
+   console.log("Lead saved");
 
-    await sendAutoReply(lead);
+console.log("Starting admin email");
+await sendLeadNotification(lead);
+console.log("Finished admin email");
+
+console.log("Starting auto reply");
+await sendAutoReply(lead);
+console.log("Finished auto reply");
+
+console.log("Sending API response");
 
     res.status(201).json({
       success: true,
